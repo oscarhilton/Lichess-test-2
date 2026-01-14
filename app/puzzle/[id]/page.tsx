@@ -8,13 +8,14 @@ import PuzzleNavigation from '@/components/PuzzleNavigation';
 export const dynamic = 'force-dynamic';
 
 interface PuzzlePageProps {
-  params: {
+  params: Promise<{
     id: string;
-  };
+  }>;
 }
 
 export default async function PuzzlePage({ params }: PuzzlePageProps) {
-  const puzzle = getPuzzleById(params.id);
+  const { id } = await params;
+  const puzzle = getPuzzleById(id);
 
   if (!puzzle) {
     notFound();
