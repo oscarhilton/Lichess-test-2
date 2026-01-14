@@ -76,13 +76,13 @@ export default function ChessBoard({
       {/* Chessboard Container */}
       <div className="w-full aspect-square max-w-[500px] sm:max-w-[600px]">
         <Chessboard
-          options={{
-            position: position,
-            onPieceDrop: onPieceDrop,
-            boardStyle: { 
-              borderRadius: '12px', 
-              boxShadow: '0 8px 16px rgba(0, 0, 0, 0.15)',
-            },
+          position={position}
+          onPieceDrop={(sourceSquare, targetSquare, piece) =>
+            onPieceDrop({ piece, sourceSquare, targetSquare })
+          }
+          customBoardStyle={{
+            borderRadius: '12px',
+            boxShadow: '0 8px 16px rgba(0, 0, 0, 0.15)',
           }}
         />
       </div>
