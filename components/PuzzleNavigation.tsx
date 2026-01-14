@@ -30,11 +30,12 @@ export default function PuzzleNavigation({ currentPuzzleId, nextPuzzleId }: Puzz
   };
 
   return (
-    <div className="flex gap-4 justify-center">
+    <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-stretch sm:items-center mt-6">
       <button
         onClick={handleBackToHome}
-        className="px-6 py-3 bg-gray-500 text-white rounded-lg hover:bg-gray-600 transition"
+        className="w-full sm:w-auto px-6 py-3 sm:py-3.5 bg-slate-600 text-white rounded-xl hover:bg-slate-700 active:bg-slate-800 transition-all duration-200 font-semibold text-sm sm:text-base shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 flex items-center justify-center gap-2"
       >
+        <span className="text-lg">←</span>
         Back to Home
       </button>
       
@@ -42,9 +43,19 @@ export default function PuzzleNavigation({ currentPuzzleId, nextPuzzleId }: Puzz
         <button
           onClick={handleNext}
           disabled={isNavigating}
-          className="px-6 py-3 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition disabled:opacity-50"
+          className="w-full sm:w-auto px-6 py-3 sm:py-3.5 bg-blue-600 text-white rounded-xl hover:bg-blue-700 active:bg-blue-800 transition-all duration-200 font-semibold text-sm sm:text-base shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none flex items-center justify-center gap-2"
         >
-          {isNavigating ? 'Loading...' : 'Next Puzzle'}
+          {isNavigating ? (
+            <>
+              <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin" />
+              Loading...
+            </>
+          ) : (
+            <>
+              Next Puzzle
+              <span className="text-lg">→</span>
+            </>
+          )}
         </button>
       )}
     </div>
