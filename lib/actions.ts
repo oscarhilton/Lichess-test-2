@@ -22,8 +22,9 @@ export async function submitMove(
 
   const chess = new Chess(currentFen);
   
+  let actualMove;
   try {
-    chess.move(move);
+    actualMove = chess.move(move);
   } catch (error) {
     return {
       correct: false,
@@ -31,7 +32,9 @@ export async function submitMove(
     };
   }
 
-  const isCorrect = move === puzzle.correctMove;
+  // Compare the move in UCI format (from+to)
+  const moveUCI = `${actualMove.from}${actualMove.to}`;
+  const isCorrect = moveUCI === puzzle.correctMove;
   const progress = updateProgress(puzzleId, isCorrect);
   const confidenceLevel = getConfidenceLevel(progress.confidence);
 

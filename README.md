@@ -131,6 +131,33 @@ Edit `/lib/puzzles.ts` and add to the `puzzles` array:
 
 Edit `/lib/hints.ts` to add hints for new puzzles.
 
+## Production Considerations
+
+This is a demonstration application. For production use, consider the following improvements:
+
+### Data Persistence
+- Replace in-memory progress tracking (`lib/confidence.ts`) with a database (PostgreSQL, MongoDB, etc.)
+- Implement user authentication and session management
+- Store puzzle progress per user in the database
+
+### Scalability
+- Optimize SSE hint streaming for high concurrency
+- Consider using WebSockets or polling for real-time updates
+- Implement rate limiting on API endpoints
+- Use a CDN for static assets
+
+### Security
+- Add CSRF protection for Server Actions
+- Implement input validation and sanitization
+- Add authentication middleware
+- Secure API endpoints
+
+### Performance
+- Implement proper database indexing
+- Add Redis for caching frequently accessed data
+- Optimize bundle size with dynamic imports
+- Add image optimization
+
 ## License
 
 ISC

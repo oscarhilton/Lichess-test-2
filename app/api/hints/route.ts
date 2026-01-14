@@ -11,6 +11,10 @@ export async function GET(request: NextRequest) {
 
   const hints = getHintsForPuzzle(puzzleId);
 
+  // NOTE: For production, consider using a more scalable approach:
+  // - Shorter delays or progressive hints based on user activity
+  // - Message queue system for long-running operations
+  // - Client-side timeout handling
   const encoder = new TextEncoder();
   const stream = new ReadableStream({
     async start(controller) {

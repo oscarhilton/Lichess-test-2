@@ -1,5 +1,8 @@
 import { UserProgress, ConfidenceLevel } from './types';
 
+// NOTE: In-memory storage for demonstration purposes only.
+// In production, replace this with a persistent database (e.g., PostgreSQL, MongoDB)
+// or use server-side sessions with a database backend.
 const progressStore = new Map<string, UserProgress>();
 
 export function updateProgress(

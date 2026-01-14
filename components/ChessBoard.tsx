@@ -50,6 +50,7 @@ export default function ChessBoard({
 
     (async () => {
       try {
+        // Submit the move using the original FEN (before move was made)
         const moveResult = await submitMove(
           puzzleId,
           `${sourceSquare}${targetSquare}`,
